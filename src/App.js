@@ -10,6 +10,9 @@ function App() {
   const cart = useSelector(cartSelector);
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
   return (
     <Container maxW='container.lg' p={0} mt={10}>
       <Flex
@@ -35,7 +38,7 @@ function App() {
         bgGradient='linear(to-b, green.200, green.600)'
         boxShadow="base" >
         <Heading color='white'>
-          ${balance}
+          ${numberWithCommas(balance)}
         </Heading>
       </Flex>
 
